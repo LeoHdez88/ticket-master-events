@@ -1,10 +1,14 @@
+import { useEffect } from 'react';
 import Image from 'react-bootstrap/Image';
 import imgs from "../../utils/img/logo_Boletas.svg"
 import { Link, useLocation  } from 'react-router-dom';
-
+import { useUserContext, useUserToggleContext } from "../../hooks/UserProvider";
 
 
 const Navbars = () =>{
+
+      const user = useUserContext();
+      console.log(user);
 
     const location = useLocation();
     return(
@@ -14,20 +18,34 @@ const Navbars = () =>{
           <button className="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
               <span className="navbar-toggler-icon"></span>
             </button>
-            <Link className="navbar-brand" to={`/`} >
-            <Image
-                    alt="Logo"
-                    src={imgs}
-                    width="100%"
-                    height="80"
-                    style={{
+            <div className="d-flex flex-row-reverse">
+              <div className="p-2">
+                <Link className="navbar-brand" to={`/`} >
+                <Image
+                        alt="Logo"
+                        src={imgs}
+                        width="100%"
+                        height="80"
+                        style={{
 
-                      }}
-                    className="d-inline-block align-top"
-                    roundedCircle 
-                    />
-                    {' '}
-            </Link>
+                          }}
+                        className="d-inline-block align-top"
+                        />
+                        {' '}
+                </Link>
+              </div>
+              <div className="p-2">
+                {
+                    user ?
+                    (
+                      <Link className='nav-link text-white' style={{color:"white"}} to='/profile'>{user?.Email} </Link>
+                    ):
+                    (
+                      <span></span>
+                    )
+                }
+              </div>
+            </div>
             <div className="offcanvas offcanvas-start text-bg-dark" tabIndex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
               <div className="offcanvas-header" style={{marginBottom: "-50px"}}>
                 <h5 className="offcanvas-title" id="offcanvasNavbarLabel">
