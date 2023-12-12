@@ -1,10 +1,11 @@
 import { useState,useRef, useEffect } from 'react'
 import ReactPaginate from 'react-paginate';
 
-import Events from '../../components/Events';
-import Searchs from "../../components/Searchs";
+import Events from '../../components/Events/Events';
+import Searchs from "../../components/Searchs/Searchs";
 import useEventsData from "../../hooks/useEventsData";
 import style from "./EventsViews.module.css";
+import Error from '../../components/Error/Error';
 
 const EventsViews = () => {
     const { events, islonding, error, fetchEvent, page }=useEventsData();
@@ -37,7 +38,7 @@ const EventsViews = () => {
         }
 
         if(error){
-            return <div>Ha Ocurrido un Error</div>;
+            return <Error title="Error" message="Se presento un error al consultar la informacion, por favor recargue la pagina" />
         }
 
 

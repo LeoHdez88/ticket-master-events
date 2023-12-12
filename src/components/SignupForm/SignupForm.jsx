@@ -1,5 +1,6 @@
 import  { useState} from 'react'
 import { useUserContext, useUserToggleContext } from "../../hooks/UserProvider";
+import { useNavigate } from 'react-router-dom';
 
 const SignupForm = () =>{
    // const {register, handleSubmit, reset, formState:{errors}}= useForm();
@@ -9,6 +10,8 @@ const SignupForm = () =>{
     const [error, setError] = useState (null);
 
     const cambiaLogin = useUserToggleContext();
+
+    const navigate = useNavigate();
 
     
     const handleClearClick = () => {
@@ -44,10 +47,10 @@ const SignupForm = () =>{
             Email: email
           }
           cambiaLogin(user)
-         // console.log(user);
           setNameUser("")
           setAge("")
           setEmail("")
+          navigate("/events")
           
     };
 
@@ -108,17 +111,6 @@ const SignupForm = () =>{
                                                  onChange={(e)=>{setEmail(e.target.value)}}                                            
                                             />
                                         </div>
-
-                                        {/* <div className="form-outline mb-4">
-                                        <label className="form-label" form="password">Contraseña</label>
-                                        <input type="password" id="password" className="form-control form-control-lg" {...register('password',{required: true})}/>
-                                        </div>
-
-                                        <div className="form-outline mb-4">
-                                        <label className="form-label" form="passwordRequed">Repita su Contraseña</label>
-                                        <input type="password" id="passwordRequed" className="form-control form-control-lg" {...register('passwordRequed',{required: true})}/>
-                                        </div> */}
-
                                     
                                         <div className="d-flex justify-content-center">
                                             <div 

@@ -3,16 +3,14 @@ import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
-
-import Routes from './routes';
+import { UserProvider } from './hooks/UserProvider';
+import Routes from './routes/MyRoutes';
 
 function App() {
   return (
-    <>
-
-          <Routes/>
-
-    </>
+          <UserProvider>
+              <Routes/>
+          </UserProvider>
   );
 }
 

@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import EventItem from "./EventItem";
+import EventItem from "./EventItem/EventItem";
 
 
 
@@ -30,10 +30,8 @@ const Events = ({ searchTerm, events }) =>{
     };
     
     return(
-        <div>
-            <div>
-                <h2> Eventos</h2>
-            </div>
+        <div className="row">
+            
             {renderEvents()}
         </div>
     );
