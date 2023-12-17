@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import Image from 'react-bootstrap/Image';
 import imgs from "../../utils/img/logo_Boletas.svg"
 import logo from "../../utils/img/logo_B.svg"
